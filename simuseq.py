@@ -75,7 +75,7 @@ class SimuSEQ:
                 break
         opf.close()
 
-    def microarray(self, seq):
+    def microarray(self, seq, bgcolor='black'):
         f2 = open('result.txt')
         file = f2.read()
         rev = []
@@ -123,6 +123,7 @@ class SimuSEQ:
                 span_end.append(`match.end()`)
             f4.write(`num`+","+namelist[i]+","+mp+","+ms+","+me+"\n")
         f4.close()
+<<<<<<< Updated upstream
         self.saveimg('microarray.txt')
         # Exlev = []
         # gname = []
@@ -172,6 +173,11 @@ class SimuSEQ:
         Exlev = []
         gname = []
         f5 = open(filename, 'r')
+=======
+        Exlev = []
+        gname = []
+        f5 = open('microarray.txt', 'r')
+>>>>>>> Stashed changes
         reader = csv.reader(f5)
         for row in reader:
             Exlev.append(int(row[0]))
@@ -208,13 +214,13 @@ class SimuSEQ:
         for i in range(sq*sq-n):
             T.append(0)
         plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('jet'))
-        # plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('Greens'))
         plt.xticks(())
         plt.yticks(())
         plt.colorbar()
         plt.savefig("microarray.png")
-
+        
     def fasta(self, seq):
+        print YELLOW+"outputting data"+ENDC
         f6 = open('result.fasta', 'w')
         d = datetime.datetime.today()
         f6.write('>simulated data|%s\n' % (d))
@@ -241,15 +247,23 @@ class SimuSEQ:
         f6.close()
     def makedata(self, dirname="SimuSEQ_result"):
         if os.path.exists(os.getcwd()+"/"+dirname):
-            print BLUE+dirname+RED+" already exists !!"+ENDC        
-            try:
-                dirname = raw_input(YELLOW+"Please input other name : "+ENDC)
-            except:
-                raise
-            finally:
-                print GREEN+"Project END"+ENDC
+            swt = 1
+            print BLUE+dirname+RED+" already exists !!"+ENDC
+            dirname = raw_input(YELLOW+"Please input other name : "+ENDC)
+            while swt == 1:
+                if os.path.exists(os.getcwd()+"/"+dirname):
+                    dirname = raw_input(RED+"ERROR "+GREEN+"Please input other name : "+ENDC)
+                else:
+                    break
+        print GREEN+"Project END"+ENDC
         os.mkdir(dirname)
         shutil.move('probe.txt',os.getcwd()+"/"+dirname)
         shutil.move('microarray.txt',os.getcwd()+"/"+dirname)
         shutil.move('result.fasta',os.getcwd()+"/"+dirname)
         shutil.move('microarray.png',os.getcwd()+"/"+dirname)
+    def auto(self, seq="NONAME"):
+        seq = SimuSEQ().readseq()
+        SimuSEQ().makeprobe(seq)
+        SimuSEQ().microarray(seq)
+        SimuSEQ().fasta(seq)
+        SimuSEQ().makedata()
