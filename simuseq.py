@@ -123,9 +123,55 @@ class SimuSEQ:
                 span_end.append(`match.end()`)
             f4.write(`num`+","+namelist[i]+","+mp+","+ms+","+me+"\n")
         f4.close()
+        self.saveimg()
+        # Exlev = []
+        # gname = []
+        # f5 = open('microarray.txt', 'r')
+        # reader = csv.reader(f5)
+        # for row in reader:
+        #     Exlev.append(int(row[0]))
+        #     gname.append(row[1])
+        # n = len(Exlev)
+        # exmax = max(Exlev)
+        # exmin = min(Exlev)
+        # ex = exmax - exmin
+        # sq = math.sqrt(n)
+        # for i in range(n):
+        #     if i*i >= n:
+        #         sq = i
+        #         break
+        # X = []
+        # Y = []
+        # for i in range(sq):
+        #     for j in range(sq):
+        #         X.append(i+0.5)
+        #         Y.append(j+0.5)
+        # ax = plt.axes([0.025, 0.025, 0.95, 0.95])
+        # ax.set_xlim(0,sq)
+        # ax.set_ylim(0,sq)
+        # ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
+        # ax.xaxis.set_minor_locator(plt.MultipleLocator(1.0))
+        # ax.yaxis.set_major_locator(plt.MultipleLocator(1.0))
+        # ax.yaxis.set_minor_locator(plt.MultipleLocator(1.0))
+        # ax.grid(which='major', axis='x', linewidth=0.75, linestyle='-', color='0')
+        # ax.grid(which='minor', axis='x', linewidth=0.25, linestyle='-', color='0')
+        # ax.grid(which='major', axis='y', linewidth=0.75, linestyle='-', color='0')
+        # ax.grid(which='minor', axis='y', linewidth=0.25, linestyle='-', color='0')
+        # ax.set_xticklabels([])
+        # ax.set_yticklabels([])
+        # T = Exlev
+        # for i in range(sq*sq-n):
+        #     T.append(0)
+        # plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('Greens'))
+        # plt.xticks(())
+        # plt.yticks(())
+        # plt.colorbar()
+        # plt.savefig("microarray.png")
+        
+    def saveimg(self, bgcolor='black'):
         Exlev = []
         gname = []
-        f5 = open('microarray.txt', 'r')
+        f5 = open('SimuSEQ_result/microarray.txt', 'r')
         reader = csv.reader(f5)
         for row in reader:
             Exlev.append(int(row[0]))
@@ -145,7 +191,7 @@ class SimuSEQ:
             for j in range(sq):
                 X.append(i+0.5)
                 Y.append(j+0.5)
-        ax = plt.axes([0.025, 0.025, 0.95, 0.95])
+        ax = plt.axes([0.025, 0.025, 0.95, 0.95], axisbg=bgcolor)
         ax.set_xlim(0,sq)
         ax.set_ylim(0,sq)
         ax.xaxis.set_major_locator(plt.MultipleLocator(1.0))
@@ -161,12 +207,13 @@ class SimuSEQ:
         T = Exlev
         for i in range(sq*sq-n):
             T.append(0)
-        plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('Greens'))
+        plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('jet'))
+        # plt.scatter(X, Y, s=75, c=T, alpha=.5, cmap=plt.cm.get_cmap('Greens'))
         plt.xticks(())
         plt.yticks(())
         plt.colorbar()
         plt.savefig("microarray.png")
-        
+
     def fasta(self, seq):
         f6 = open('result.fasta', 'w')
         d = datetime.datetime.today()
