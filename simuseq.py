@@ -123,7 +123,7 @@ class SimuSEQ:
                 span_end.append(`match.end()`)
             f4.write(`num`+","+namelist[i]+","+mp+","+ms+","+me+"\n")
         f4.close()
-        self.saveimg()
+        self.saveimg('microarray.txt')
         # Exlev = []
         # gname = []
         # f5 = open('microarray.txt', 'r')
@@ -168,10 +168,10 @@ class SimuSEQ:
         # plt.colorbar()
         # plt.savefig("microarray.png")
         
-    def saveimg(self, bgcolor='black'):
+    def saveimg(self, filename='SimuSEQ_result/microarray.txt', bgcolor='black'):
         Exlev = []
         gname = []
-        f5 = open('SimuSEQ_result/microarray.txt', 'r')
+        f5 = open(filename, 'r')
         reader = csv.reader(f5)
         for row in reader:
             Exlev.append(int(row[0]))
