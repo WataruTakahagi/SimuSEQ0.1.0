@@ -1,4 +1,4 @@
-# SimuSEQ
+## SimuSEQ
 
-## from simuseq import SimuSEQ  
-## SimuSEQ.auto()
+    from simuseq import SimuSEQ  
+    SimuSEQ.auto()
