@@ -1,4 +1,5 @@
 ## SimuSEQ
 
     from simuseq import SimuSEQ  
-    SimuSEQ.auto()
+    SimuSEQ().auto()
+
