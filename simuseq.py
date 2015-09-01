@@ -213,13 +213,13 @@ class SimuSEQ:
         if os.path.exists(os.getcwd()+'/microarray.png'): shutil.move('microarray.png',os.getcwd()+"/"+dirname)
     def auto(self, seq="NONAME"):
         setting = [1,1,1,0,1] # 1 : on, 0 : off
-        SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe","SimuSEQ().microarray","SimuSEQ().fasta()","SimuSEQ().makedata()"]
+        SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe()","SimuSEQ().microarray()","SimuSEQ().fasta()","SimuSEQ().makedata()"]
         for i in range(len(setting)):
             if setting[i] == 1:
-                print "{:<20}".format(SimuSEQ_list[i])+" : "+GREEN+"on"+ENDC
+                print YELLOW+"{:<22}".format(SimuSEQ_list[i])+ENDC+" : "+GREEN+"on"+ENDC
             elif setting[i] == 0:
-                print "{:<20}".format(SimuSEQ_list[i])+" : "+RED+"off"+ENDC
-        stt = raw_input("continue? ("+BLUE+"y"+ENDC+"/"+RED+"n"+ENDC+") : ")
+                print YELLOW+"{:<22}".format(SimuSEQ_list[i])+ENDC+" : "+RED+"off"+ENDC
+        stt = raw_input(YELLOW+"continue?"+ENDC+" ("+BLUE+"y"+ENDC+"/"+RED+"n"+ENDC+") : ")
         if stt == "y":
             if setting[0] == 1: seq = SimuSEQ().readseq()
             if setting[1] == 1: SimuSEQ().makeprobe(seq)
