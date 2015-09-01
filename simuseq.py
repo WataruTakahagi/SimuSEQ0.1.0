@@ -45,7 +45,9 @@ class SimuSEQ:
                 back.append(int(row[2])-1)
                 fb.append(row[3])
             for i in range(len(list_operon)):
-                probe.append(seq[int(front[i]):int(front[i])+probe_size])
+                probe.append(seq[int(front[i]):int(front[i])+probe_size]) #Front probe
+                #probe.append(seq[int(back[i])-probe_size:int(back[i])])   #Rear probe
+                #probe.append(seq[int(front[i]):int(back[i])])             #Full probe
             list_probe = probe
             for i in range(len(fb)):
                 if fb[i] == "-1":
@@ -205,13 +207,27 @@ class SimuSEQ:
                     break
         print GREEN+"Project END"+ENDC
         os.mkdir(dirname)
-        shutil.move('probe.txt',os.getcwd()+"/"+dirname)
-        shutil.move('microarray.txt',os.getcwd()+"/"+dirname)
-        shutil.move('result.fasta',os.getcwd()+"/"+dirname)
-        shutil.move('microarray.png',os.getcwd()+"/"+dirname)
+        if os.path.exists(os.getcwd()+'/probe.txt'): shutil.move('probe.txt',os.getcwd()+"/"+dirname)
+        if os.path.exists(os.getcwd()+'/microarray.txt'): shutil.move('microarray.txt',os.getcwd()+"/"+dirname)
+        if os.path.exists(os.getcwd()+'/result.fasta'): shutil.move('result.fasta',os.getcwd()+"/"+dirname)
+        if os.path.exists(os.getcwd()+'/microarray.png'): shutil.move('microarray.png',os.getcwd()+"/"+dirname)
     def auto(self, seq="NONAME"):
-        seq = SimuSEQ().readseq()
-        SimuSEQ().makeprobe(seq)
-        SimuSEQ().microarray(seq)
-        SimuSEQ().fasta(seq)
-        SimuSEQ().makedata()
+        setting = [1,1,1,0,1] # 1 : on, 0 : off
+        SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe","SimuSEQ().microarray","SimuSEQ().fasta()","SimuSEQ().makedata()"]
+        for i in range(len(setting)):
+            if setting[i] == 1:
+                print "{:<20}".format(SimuSEQ_list[i])+" : "+GREEN+"on"+ENDC
+            elif setting[i] == 0:
+                print "{:<20}".format(SimuSEQ_list[i])+" : "+RED+"off"+ENDC
+        stt = raw_input("continue? ("+BLUE+"y"+ENDC+"/"+RED+"n"+ENDC+") : ")
+        if stt == "y":
+            if setting[0] == 1: seq = SimuSEQ().readseq()
+            if setting[1] == 1: SimuSEQ().makeprobe(seq)
+            if setting[2] == 1: SimuSEQ().microarray(seq)
+            if setting[3] == 1: SimuSEQ().fasta(seq)
+            if setting[4] == 1: SimuSEQ().makedata()
+        elif stt == "n":
+            pass
+        else:
+            print RED+"ERROR"+ENDC
+            
