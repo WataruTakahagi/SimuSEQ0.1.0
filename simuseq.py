@@ -168,6 +168,26 @@ class SimuSEQ:
         plt.yticks(())
         plt.colorbar()
         plt.savefig("microarray.png")
+        plt.close()
+        f5.close()
+        
+    def rank(self, microarray='microarray.txt'):
+        f7 = open(microarray, 'r')
+        reader = csv.reader(f7)
+        list = []
+        time = []
+        n = 0
+        for i in reader:
+            list.append(int(i[0]))
+            time.append(n)
+            n += 1
+        a = sorted(list)
+        plt.bar(time,a,align="center",color = "blue")
+        plt.xlim([0,2600])
+        plt.ylim([0,140])
+        plt.savefig("rank.png")
+        plt.close()
+        f7.close()
         
     def fasta(self, seq):
         print YELLOW+"outputting data"+ENDC
@@ -195,6 +215,7 @@ class SimuSEQ:
         f6.write('\n')
         #print
         f6.close()
+
     def makedata(self, dirname="SimuSEQ_result"):
         if os.path.exists(os.getcwd()+"/"+dirname):
             swt = 1
@@ -209,11 +230,12 @@ class SimuSEQ:
         os.mkdir(dirname)
         if os.path.exists(os.getcwd()+'/probe.txt'): shutil.move('probe.txt',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/microarray.txt'): shutil.move('microarray.txt',os.getcwd()+"/"+dirname)
+        if os.path.exists(os.getcwd()+'/rank.png'): shutil.move('rank.png',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/result.fasta'): shutil.move('result.fasta',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/microarray.png'): shutil.move('microarray.png',os.getcwd()+"/"+dirname)
     def auto(self, seq="NONAME"):
-        setting = [1,1,1,0,1] # 1 : on, 0 : off
-        SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe()","SimuSEQ().microarray()","SimuSEQ().fasta()","SimuSEQ().makedata()"]
+        setting = [1,1,1,1,0,1] # 1 : on, 0 : off
+        SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe()","SimuSEQ().microarray()","SimuSEQ().rank()","SimuSEQ().fasta()","SimuSEQ().makedata()"]
         for i in range(len(setting)):
             if setting[i] == 1:
                 print YELLOW+"{:<22}".format(SimuSEQ_list[i])+ENDC+" : "+GREEN+"on"+ENDC
@@ -224,8 +246,9 @@ class SimuSEQ:
             if setting[0] == 1: seq = SimuSEQ().readseq()
             if setting[1] == 1: SimuSEQ().makeprobe(seq)
             if setting[2] == 1: SimuSEQ().microarray(seq)
-            if setting[3] == 1: SimuSEQ().fasta(seq)
-            if setting[4] == 1: SimuSEQ().makedata()
+            if setting[3] == 1: SimuSEQ().rank()
+            if setting[4] == 1: SimuSEQ().fasta(seq)
+            if setting[5] == 1: SimuSEQ().makedata()
         elif stt == "n":
             pass
         else:
