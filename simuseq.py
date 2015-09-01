@@ -233,6 +233,7 @@ class SimuSEQ:
         if os.path.exists(os.getcwd()+'/rank.png'): shutil.move('rank.png',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/result.fasta'): shutil.move('result.fasta',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/microarray.png'): shutil.move('microarray.png',os.getcwd()+"/"+dirname)
+
     def auto(self, seq="NONAME"):
         setting = [1,1,1,1,0,1] # 1 : on, 0 : off
         SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe()","SimuSEQ().microarray()","SimuSEQ().rank()","SimuSEQ().fasta()","SimuSEQ().makedata()"]
