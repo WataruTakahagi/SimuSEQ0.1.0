@@ -12,7 +12,7 @@
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : y
     
-![microarray.png](http://www.fastpic.jp/viewer.php?file=8543443149.png "microarray.png")
+![microarray.png](http://www.fastpic.jp/images.php?file=8543443149.png "microarray.png")
     
 If you would like to check the status of SimuSEQ, please run main.py .  
 
