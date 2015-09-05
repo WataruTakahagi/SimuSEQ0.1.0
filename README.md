@@ -23,7 +23,7 @@ If you would like to check the status of SimuSEQ, please run main.py .
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : n
     
-You can change arguments to set the status of SimuSEQ
+You can change arguments to set the status of SimuSEQ auto mode
     
 ### 1 : on, 0 : off
 #### SimuSEQ().auto(1,1,1,1,0,1)
