@@ -3,6 +3,15 @@
     from simuseq import SimuSEQ  
     SimuSEQ().auto([1,1,1,1,0,1])
     
+    > python main.py
+    SimuSEQ().readseq()    : on  
+    SimuSEQ().makeprobe()  : on  
+    SimuSEQ().microarray() : on  
+    SimuSEQ().rank()       : on  
+    SimuSEQ().fasta()      : off  
+    SimuSEQ().makedata()   : on  
+    Continue? (y/n) : y
+    
 If you would like to check the status of SimuSEQ, please run main.py .  
 
     > python main.py
@@ -12,7 +21,7 @@ If you would like to check the status of SimuSEQ, please run main.py .
     SimuSEQ().rank()       : on  
     SimuSEQ().fasta()      : off  
     SimuSEQ().makedata()   : on  
-    Continue? (y/n) : 
+    Continue? (y/n) : n
     
 You can change arguments to set the status of SimuSEQ
     
