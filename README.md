@@ -1,4 +1,5 @@
 ## <span style="color:red">S</span>imuSE<span style="color:blue">Q</span>
+### Microarray analysis tool for whole-ecoli project
 
     from simuseq import SimuSEQ  
     SimuSEQ().auto([1,1,1,1,0,1])
