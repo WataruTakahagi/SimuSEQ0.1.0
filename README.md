@@ -12,6 +12,8 @@
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : y
     
+![microarray.png](http://www.fastpic.jp/viewer.php?file=8543443149.png "microarray.png")
+    
 If you would like to check the status of SimuSEQ, please run main.py .  
 
     > python main.py
@@ -33,3 +35,4 @@ You can change arguments to set the status of SimuSEQ auto mode
 1: SimuSEQ().rank()        
 0: SimuSEQ().fasta()  
 1: SimuSEQ().makedata()    
+
