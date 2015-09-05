@@ -172,7 +172,12 @@ class SimuSEQ:
         f5.close()
         
     def rank(self, microarray='microarray.txt'):
-        f7 = open(microarray, 'r')
+        try:
+            f7 = open(microarray, 'r')
+        except:
+            print
+            print RED+"ERROR"+GREEN+" try "+YELLOW+"SimuSEQ().microarray() "+ENDC+":"+GREEN+" on"+ENDC
+            sys.exit()
         reader = csv.reader(f7)
         list = []
         time = []
