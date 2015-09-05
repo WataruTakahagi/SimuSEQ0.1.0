@@ -1,4 +1,4 @@
-## SimuSEQ
+## <span style="color:red">S</span>imuSE<span style="color:blue">Q</span>
 
     from simuseq import SimuSEQ  
     SimuSEQ().auto([1,1,1,1,0,1])
