@@ -2,4 +2,4 @@
 
 from simuseq import SimuSEQ
 
-SimuSEQ().auto()
+SimuSEQ().auto([1,1,1,1,0,1])
