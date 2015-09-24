@@ -1,4 +1,12 @@
 ## <span style="color:red">S</span>imuSE<span style="color:blue">Q</span>
+
+### Install
+```shell
+python setup.py install
+# or user install with
+# python setup.py install --user
+```
+
 ### Microarray analysis tool for whole-ecoli project
 
     from simuseq import SimuSEQ  
