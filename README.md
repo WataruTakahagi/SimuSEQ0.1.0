@@ -1,4 +1,5 @@
 ## <span style="color:red">S</span>imuSE<span style="color:blue">Q</span>
+![logo.png](http://www.fastpic.jp/viewer.php?file=4837654670.jpg "logo-simuseq.png")
 
 ### Install
 ```shell
