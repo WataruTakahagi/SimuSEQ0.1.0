@@ -10,7 +10,7 @@ python setup.py install
 ### Microarray analysis tool for whole-ecoli project
 
     from simuseq import SimuSEQ  
-    SimuSEQ().auto([1,1,1,1,0,1])
+    SimuSEQ().auto([1,1,1,1,0,1],'front','50')
     
     > python main.py
     SimuSEQ().readseq()    : on  
@@ -37,7 +37,7 @@ If you would like to check the status of SimuSEQ, please run main.py .
 You can change arguments to set the status of SimuSEQ auto mode
     
 ### 1 : on, 0 : off
-#### SimuSEQ( ).auto([1,1,1,1,0,1])
+#### SimuSEQ( ).auto([1,1,1,1,0,1],'front','50')
 1: SimuSEQ( ).readseq( )  
 1: SimuSEQ( ).makeprobe( )    
 1: SimuSEQ( ).microarray( )    
