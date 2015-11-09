@@ -23,7 +23,7 @@ python setup.py install
     
 ![microarray.png](http://www.fastpic.jp/images.php?file=8543443149.png "microarray.png")
     
-If you would like to check the status of SimuSEQ, please run main.py .  
+####If you would like to check the status of SimuSEQ, please run main.py .  
 
     > python main.py
     SimuSEQ().readseq()    : on  
@@ -34,16 +34,16 @@ If you would like to check the status of SimuSEQ, please run main.py .
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : n
     
-You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
+####You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
 
     SimuSEQ().auto([1,1,1,1,0,1],'front','50')
     SimuSEQ().auto([1,1,1,1,0,1],'rear','30')
     SimuSEQ().auto([1,1,1,1,0,1],'full','full')
     
-You can change arguments to set the status of SimuSEQ auto mode
+####You can change arguments to set the status of SimuSEQ auto mode
     
-### 1 : on, 0 : off
-#### SimuSEQ( ).auto([1,1,1,1,0,1],'front','50')
+##### 1 : on, 0 : off
+##### SimuSEQ( ).auto([1,1,1,1,0,1],'front','50')
 1: SimuSEQ( ).readseq( )  
 1: SimuSEQ( ).makeprobe( )    
 1: SimuSEQ( ).microarray( )    
