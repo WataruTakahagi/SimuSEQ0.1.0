@@ -24,9 +24,9 @@ class SimuSEQ:
         self.seq = data.read()
         result = self.seq
         return result
-    
-    def makeprobe(self, seq):
-        probe_size = 50
+
+    def makeprobe(self, seq, fr, ps=50):
+        probe_size = ps
         list_operon = []
         front = []
         back = []
@@ -45,9 +45,9 @@ class SimuSEQ:
                 back.append(int(row[2])-1)
                 fb.append(row[3])
             for i in range(len(list_operon)):
-                probe.append(seq[int(front[i]):int(front[i])+probe_size]) #Front probe
-                #probe.append(seq[int(back[i])-probe_size:int(back[i])])   #Rear probe
-                #probe.append(seq[int(front[i]):int(back[i])])             #Full probe
+                if fr == "front": probe.append(seq[int(front[i]):int(front[i])+probe_size]) #Front probe
+                if fr == "rear" : probe.append(seq[int(back[i])-probe_size:int(back[i])])   #Rear probe
+                if fr == "full" : probe.append(seq[int(front[i]):int(back[i])])             #Full probe
             list_probe = probe
             for i in range(len(fb)):
                 if fb[i] == "-1":
@@ -81,7 +81,7 @@ class SimuSEQ:
         f2 = open('result.txt')
         file = f2.read()
         rev = []
-        for line_r in file: 
+        for line_r in file:
             rev.append(line_r)
         rev.reverse()
         rev = ''.join(rev)
@@ -170,7 +170,7 @@ class SimuSEQ:
         plt.savefig("microarray.png")
         plt.close()
         f5.close()
-        
+
     def rank(self, microarray='microarray.txt'):
         try:
             f7 = open(microarray, 'r')
@@ -193,7 +193,7 @@ class SimuSEQ:
         plt.savefig("rank.png")
         plt.close()
         f7.close()
-        
+
     def fasta(self, seq):
         print YELLOW+"outputting data"+ENDC
         f6 = open('result.fasta', 'w')
@@ -239,7 +239,7 @@ class SimuSEQ:
         if os.path.exists(os.getcwd()+'/result.fasta'): shutil.move('result.fasta',os.getcwd()+"/"+dirname)
         if os.path.exists(os.getcwd()+'/microarray.png'): shutil.move('microarray.png',os.getcwd()+"/"+dirname)
 
-    def auto(self, setting=[1,1,1,1,0,1]):
+    def auto(self, setting, fr, ps):
         #setting = [1,1,1,1,0,1] # 1 : on, 0 : off
         SimuSEQ_list = ["SimuSEQ().readseq()","SimuSEQ().makeprobe()","SimuSEQ().microarray()","SimuSEQ().rank()","SimuSEQ().fasta()","SimuSEQ().makedata()"]
         for i in range(len(setting)):
@@ -250,7 +250,7 @@ class SimuSEQ:
         stt = raw_input(YELLOW+"continue?"+ENDC+" ("+BLUE+"y"+ENDC+"/"+RED+"n"+ENDC+") : ")
         if stt == "y":
             if setting[0] == 1: seq = SimuSEQ().readseq()
-            if setting[1] == 1: SimuSEQ().makeprobe(seq)
+            if setting[1] == 1: SimuSEQ().makeprobe(seq,fr,ps)
             if setting[2] == 1: SimuSEQ().microarray(seq)
             if setting[3] == 1: SimuSEQ().rank()
             if setting[4] == 1: SimuSEQ().fasta(seq)
@@ -259,4 +259,3 @@ class SimuSEQ:
             pass
         else:
             print RED+"ERROR"+ENDC
-            
