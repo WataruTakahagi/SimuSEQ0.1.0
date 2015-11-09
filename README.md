@@ -34,6 +34,12 @@ If you would like to check the status of SimuSEQ, please run main.py .
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : n
     
+You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
+
+    SimuSEQ().auto([1,1,1,1,0,1],'front','50')
+    SimuSEQ().auto([1,1,1,1,0,1],'rear','30')
+    SimuSEQ().auto([1,1,1,1,0,1],'full','full')
+    
 You can change arguments to set the status of SimuSEQ auto mode
     
 ### 1 : on, 0 : off
@@ -45,8 +51,4 @@ You can change arguments to set the status of SimuSEQ auto mode
 0: SimuSEQ( ).fasta( )  
 1: SimuSEQ( ).makedata( )    
 
-You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
 
-    SimuSEQ().auto([1,1,1,1,0,1],'front','50')
-    SimuSEQ().auto([1,1,1,1,0,1],'rear','30')
-    SimuSEQ().auto([1,1,1,1,0,1],'full','full')
