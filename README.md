@@ -34,7 +34,7 @@ python setup.py install
     SimuSEQ().makedata()   : on  
     Continue? (y/n) : n
     
-####You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
+####You can set probe types and probe length. 'front', 'rear' & 'full'
 
     SimuSEQ().auto([1,1,1,1,0,1],'front','50')
     SimuSEQ().auto([1,1,1,1,0,1],'rear','30')
