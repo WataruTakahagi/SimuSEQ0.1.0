@@ -45,3 +45,8 @@ You can change arguments to set the status of SimuSEQ auto mode
 0: SimuSEQ( ).fasta( )  
 1: SimuSEQ( ).makedata( )    
 
+You can choose three types of probe and set the probe length. 'front', 'rear' & 'full'
+
+    SimuSEQ().auto([1,1,1,1,0,1],'front','50')
+    SimuSEQ().auto([1,1,1,1,0,1],'rear','30')
+    SimuSEQ().auto([1,1,1,1,0,1],'full','full')
